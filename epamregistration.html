@@ -1,0 +1,71 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A simple HTML registration form</title>
+    <style>
+        .center {
+          max-width: 500px;
+          height: 550px;
+          background-color: #e4e4f5;
+          margin: 0 auto; 
+        }
+    </style>
+    <script>  
+        function Checked(){
+            var password = document.getElementById("txtPassword").value;
+            var confirmPassword = document.getElementById("txtConfirmPassword").value;
+            var x = document.forms["myForm"]["fname"].value;
+            var y = document.forms["myForm"]["lname"].value;
+            var z = document.forms["myForm"]["email"].value;
+            var checkBox = document.getElementById("myCheck");
+            sessionStorage.setItem("z", z);
+            sessionStorage.setItem("password", password);
+            if (x == "" || x == null) 
+            {
+                alert("First Name must be filled out");
+                return false;
+            }
+            if (y == "" || y == null) 
+            {
+                alert("Last Name must be filled out");
+                return false;
+            }
+            if (z == "" || z == null) 
+            {
+                alert("Email must be filled out");
+                return false;
+            }
+            if (password != confirmPassword) 
+            {
+               alert("Passwords do not match.");
+               return false;
+            }
+            if (checkBox.checked == false)
+            {
+               alert("Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy");
+               return false;
+            } 
+            window.location.href="epamredirected.html";
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="center">
+    <br><br>
+    <form  method="get" name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
+    <h1 style="text-align:center">---------------Register---------------</h1>
+    <h4 style="text-align:center">Create your account. It's free and only takes a minute.</h4>
+    <p style="text-align:center">
+        <br><input type = "text" id = "myText" style="height: 40px; width: 190px;" placeholder="First name" name="fname"/>
+        &emsp;<input type = "text" id = "myText" style="height: 40px; width: 190px;" placeholder="Last Name" name="lname"/><br>
+        <br><input type = "text" id = "myText" style="height: 40px; width: 400px;" placeholder="Email" name="email"/><br>
+        <br><input type="password" id = "txtPassword" style="height: 40px; width: 400px;" name="Password" placeholder="Password" required/><br>
+        <br><input type="password" id = "txtConfirmPassword" style="height: 40px; width: 400px;" name="Confirm_Password" placeholder="Confirm Password" required/><br>
+        <br><input type="checkbox" id="myCheck" ><label >I accept the <a href="https://www.google.com/">Terms of Use </a>& <a href="https://www.google.com/">Privacy Policy.</a></label><br>
+        <br><button type="button"  style="height: 40px; width: 400px;background-color: #26b52f" onclick="return Checked()">Register Now</button><br>
+    </p>
+    </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A simple HTML registration form</title>
+    <style>
+        .center1 {
+          max-width: 500px;
+          height: 400px;
+          background-color: #e4e4f5;
+          margin: 0 auto; 
+        }
+    </style>
+    <script>
+        function Checked1(){
+            var z = sessionStorage.getItem("z");
+            var password = sessionStorage.getItem("password");
+            var z1 = document.forms["myForm1"]["email1"].value;
+            var password1 = document.getElementById("txtPassword1").value;
+            if (z1 == "" || z1 == null) 
+            {
+                alert("Email must be filled out");
+                return false;
+            }
+            if(password1 == "" || password1 == null)
+            {
+                alert("Password must be filled out");
+                return false;
+            }
+            if (password1 != password) 
+            {
+               alert("Passwords do not match.");
+               return false;
+            }
+            if (z1!= z) 
+            {
+               alert("Cannot find Email");
+               return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="center1">
+    <br><br>
+    <form name="myForm1" action="/action_page.php" onsubmit="return validateForm()" method="post" required>
+    <p style="text-align:center">
+        <br><input type="text" id = "txtemail" style="height: 55px; width: 300px;" name="email1" placeholder="Email" required/><br>
+        <br><input type="password" id = "txtPassword1" style="height: 55px; width: 300px;" name="Password1" placeholder="Password" required/><br>
+        <br><button type="button"  style="height: 55px; width: 300px;background-color: #26b52f"  onclick="return Checked1()">LOGIN</button><br>
+        <br>Not registered?<a href="epamregistration.html">Create an account</a><br>
+    </p>
+    </form>
+    </div>
+</body>
+</html>
